@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/debug_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="debug"
+            android:text="debug" />
+
+        <Button
+            android:id="@+id/info_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="info"
+            android:text="info" />
+
+        <Button
+            android:id="@+id/warn_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="warn"
+            android:text="warn" />
+
+        <Button
+            android:id="@+id/error_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="error"
+            android:text="error" />
+
+        <Button
+            android:id="@+id/map_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="map"
+            android:text="map" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
