@@ -25,6 +25,13 @@ public class MainActivity extends AppCompatActivity {
         initTextToSpeech();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //释放资源
+        textToSpeech.shutdown();
+    }
+
     private void initTextToSpeech() {
         textToSpeech = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
             @Override
