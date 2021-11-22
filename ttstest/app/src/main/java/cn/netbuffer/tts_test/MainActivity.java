@@ -52,6 +52,6 @@ public class MainActivity extends AppCompatActivity {
     public void testSpeech(View view) {
         Bundle params = new Bundle();
         params.putFloat(TextToSpeech.Engine.KEY_PARAM_VOLUME, 0.1f);
-        textToSpeech.speak(editText.getText().toString(), TextToSpeech.QUEUE_FLUSH, null, null);
+        textToSpeech.speak(editText.getText().toString(), TextToSpeech.QUEUE_FLUSH, params, null);
     }
 }

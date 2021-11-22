@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
 import android.widget.TextView;
-
+import androidx.appcompat.app.AppCompatActivity;
 import com.elvishew.xlog.LogConfiguration;
 import com.elvishew.xlog.LogLevel;
 import com.elvishew.xlog.XLog;
@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import androidx.appcompat.app.AppCompatActivity;
+import cn.netbuffer.xlog_test.logpattern.XLogTestLogFlattener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -62,12 +62,13 @@ public class MainActivity extends AppCompatActivity {
                 .logLevel(LogLevel.ALL)
 //                .logLevel(BuildConfig.DEBUG ? LogLevel.ALL : LogLevel.WARN)
                 .enableThreadInfo()
-                .enableStackTrace(2)
+                .enableStackTrace(5)
                 .enableBorder()
                 .build();
         Printer androidPrinter = new AndroidPrinter(true);
         Printer filePrinter = new FilePrinter
                 .Builder(logPath)
+                .flattener(new XLogTestLogFlattener())
                 .fileNameGenerator(new DateFileNameGenerator())
                 .backupStrategy(new NeverBackupStrategy())
                 .build();
@@ -95,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
         map.put("key1", 1);
         map.put("key2", "value2");
         XLog.d(map);
+        XLog.d("map data=%s", map);
     }
 
 }
