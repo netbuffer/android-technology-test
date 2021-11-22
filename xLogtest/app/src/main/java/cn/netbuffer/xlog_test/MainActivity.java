@@ -7,6 +7,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.elvishew.xlog.LogConfiguration;
 import com.elvishew.xlog.LogLevel;
+import com.elvishew.xlog.Logger;
 import com.elvishew.xlog.XLog;
 import com.elvishew.xlog.printer.AndroidPrinter;
 import com.elvishew.xlog.printer.Printer;
@@ -24,6 +25,8 @@ import cn.netbuffer.xlog_test.logpattern.XLogTestLogFlattener;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Logger logger;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         initXLog(path);
         TextView textView = findViewById(R.id.text);
         textView.setText("日志路径:" + path);
+        logger = XLog.tag("MainActivity").build();
     }
 
     private void requestPermissions() {
@@ -97,6 +101,10 @@ public class MainActivity extends AppCompatActivity {
         map.put("key2", "value2");
         XLog.d(map);
         XLog.d("map data=%s", map);
+    }
+
+    public void logger(View view) {
+        logger.d("使用单独的logger打印日志");
     }
 
 }

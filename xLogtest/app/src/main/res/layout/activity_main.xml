@@ -52,6 +52,13 @@
             android:layout_height="wrap_content"
             android:onClick="map"
             android:text="map" />
+
+        <Button
+            android:id="@+id/logger_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="logger"
+            android:text="logger" />
     </LinearLayout>
 
 
