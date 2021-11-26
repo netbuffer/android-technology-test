@@ -1,6 +1,7 @@
 package cn.netbuffer.hilttest;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        HiltTestApp hiltTestApp = (HiltTestApp) HiltTestApp.application_context;
+        Log.i(getClass().getSimpleName(), "hiltTestApp.method return " + hiltTestApp.method());
         button = findViewById(R.id.set_btn);
         textView = findViewById(R.id.text_view);
         button.setOnClickListener(new View.OnClickListener() {
