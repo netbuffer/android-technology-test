@@ -2,6 +2,7 @@ package cn.netbuffer.handlertest;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
             Log.i(TAG, Thread.currentThread().getName() + " mainThreadHandler3.handleMessage msg=" + msg);
         }
     };
+    private Handler subThreadHandler;
     private TextView textView;
     private Button btn1;
 
@@ -108,6 +110,46 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         }, "your-thread-name").start();
+    }
+
+    public void testCreateSubThread(View view) {
+        Log.i(TAG, "btn4 click at " + new Date());
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Looper.prepare();
+                subThreadHandler = new Handler(new Handler.Callback() {
+                    @Override
+                    public boolean handleMessage(@NonNull Message msg) {
+                        Log.i(TAG, Thread.currentThread().getName() + " subThreadHandler.Callback.handleMessage msg=" + msg);
+                        return true;
+                    }
+                });
+                Looper.loop();
+            }
+        }, "your-thread-name");
+        thread.setDaemon(true);
+        thread.start();
+    }
+
+    private static final int TESTSUBTHREADHANDLER1_MESSAGE_TYPE = 1;
+
+    public void testSubThreadHandler1(View view) {
+        Log.i(TAG, "btn4_1 click at " + new Date());
+        if (subThreadHandler == null) {
+            Log.w(TAG, "subThreadHandler is null");
+            return;
+        }
+        subThreadHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                Log.i(TAG, Thread.currentThread().getName() + " execute at " + new Date());
+            }
+        });
+        //主线程向子线程发送消息，回调在子线程中执行
+        Message message = new Message();
+        message.what = TESTSUBTHREADHANDLER1_MESSAGE_TYPE;
+        subThreadHandler.sendMessage(message);
     }
 
 }

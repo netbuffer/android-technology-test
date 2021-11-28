@@ -58,6 +58,22 @@
             android:text="testMainThreadHandler3"
             android:textAllCaps="false" />
 
+        <Button
+            android:id="@+id/btn4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="testCreateSubThread"
+            android:text="testCreateSubThread"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn4_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="testSubThreadHandler1"
+            android:text="testSubThreadHandler1"
+            android:textAllCaps="false" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
