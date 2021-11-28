@@ -93,4 +93,21 @@ public class MainActivity extends AppCompatActivity {
         message.setData(data);
         mainThreadHandler3.sendMessage(message);
     }
+
+    public void testSubThreadUseHandler1(View view) {
+        Log.i(TAG, "btn1_2 click at " + new Date());
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Log.i(TAG, Thread.currentThread().getName() + " execute at " + new Date());
+                mainThreadHandler1.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        textView.setText("testSubThreadUseHandler1");
+                    }
+                });
+            }
+        }, "your-thread-name").start();
+    }
+
 }
