@@ -41,6 +41,14 @@
             android:text="getNextAlarmClock"
             android:textAllCaps="false" />
 
+        <Button
+            android:id="@+id/btn4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="setExactExecuteService"
+            android:text="setExactExecuteService"
+            android:textAllCaps="false" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

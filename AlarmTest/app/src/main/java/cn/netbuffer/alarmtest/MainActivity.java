@@ -25,14 +25,14 @@ import com.hjq.permissions.Permission;
 import com.hjq.permissions.XXPermissions;
 import java.util.Date;
 import java.util.List;
-
+import cn.netbuffer.alarmtest.constant.Constants;
 import cn.netbuffer.alarmtest.service.EchoService;
+import cn.netbuffer.alarmtest.service.ExactExecuteService;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
     private AlarmManager alarmManager;
-    private static final int START_ECHOSERVICE_REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setAction("cn.netbuffer.alarmtest.action.execute_echo_task");
         intent.setClass(this, EchoService.class);
-        PendingIntent pendingIntent = PendingIntent.getService(this, START_ECHOSERVICE_REQUEST_CODE, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getService(this, Constants.START_ECHO_SERVICE_REQUEST_CODE, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + 10 * 1000, AlarmManager.INTERVAL_FIFTEEN_MINUTES, pendingIntent);
         Log.i(TAG, Thread.currentThread().getName() + " setRepeating at " + new Date());
         Toast.makeText(this, "setRepeating", Toast.LENGTH_LONG).show();
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setAction("cn.netbuffer.alarmtest.action.execute_echo_task");
         intent.setClass(this, EchoService.class);
-        PendingIntent pendingIntent = PendingIntent.getService(this, START_ECHOSERVICE_REQUEST_CODE, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getService(this, Constants.START_ECHO_SERVICE_REQUEST_CODE, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         alarmManager.cancel(pendingIntent);
         Log.i(TAG, Thread.currentThread().getName() + " cancel at " + new Date());
         Toast.makeText(this, "cancel", Toast.LENGTH_LONG).show();
@@ -106,6 +106,10 @@ public class MainActivity extends AppCompatActivity {
     public void getNextAlarmClock(View view) {
         AlarmManager.AlarmClockInfo alarmClockInfo = alarmManager.getNextAlarmClock();
         Log.i(TAG, "getNextAlarmClock=" + alarmClockInfo);
+    }
+
+    public void setExactExecuteService(View view) {
+        ExactExecuteService.exactExecuteService(this);
     }
 
 }

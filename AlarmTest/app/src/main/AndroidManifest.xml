@@ -30,6 +30,11 @@
             android:enabled="true"
             android:exported="true" />
 
+        <service
+            android:name=".service.ExactExecuteService"
+            android:enabled="true"
+            android:exported="true" />
+
         <receiver
             android:name=".receiver.SampleBootReceiver"
             android:enabled="false">
