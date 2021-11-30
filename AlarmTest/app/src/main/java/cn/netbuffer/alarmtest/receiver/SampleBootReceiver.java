@@ -3,18 +3,19 @@ package cn.netbuffer.alarmtest.receiver;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
+import android.widget.Toast;
 
-import com.elvishew.xlog.Logger;
-import com.elvishew.xlog.XLog;
+import cn.netbuffer.alarmtest.service.ExactExecuteService;
 
 public class SampleBootReceiver extends BroadcastReceiver {
 
-    private Logger Log = XLog.tag("SampleBootReceiver").build();
-
     @Override
     public void onReceive(Context context, Intent intent) {
+        Toast.makeText(context, "SampleBootReceiver:" + intent.getAction(), Toast.LENGTH_LONG).show();
         if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
-            Log.i("onReceive intent=" + intent);
+            Log.i("SampleBootReceiver", "onReceive intent=" + intent);
+            ExactExecuteService.exactExecuteService(context);
         }
     }
 }

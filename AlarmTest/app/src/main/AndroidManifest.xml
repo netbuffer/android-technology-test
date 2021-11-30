@@ -37,7 +37,8 @@
 
         <receiver
             android:name=".receiver.SampleBootReceiver"
-            android:enabled="false">
+            android:exported="true"
+            android:enabled="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"></action>
             </intent-filter>
