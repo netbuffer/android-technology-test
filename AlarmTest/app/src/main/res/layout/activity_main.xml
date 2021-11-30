@@ -49,6 +49,14 @@
             android:text="setExactExecuteService"
             android:textAllCaps="false" />
 
+        <Button
+            android:id="@+id/btn5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="exactExecuteReceiver"
+            android:text="exactExecuteReceiver"
+            android:textAllCaps="false" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

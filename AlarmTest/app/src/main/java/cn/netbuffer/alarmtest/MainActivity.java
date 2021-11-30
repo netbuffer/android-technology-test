@@ -5,27 +5,18 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import com.elvishew.xlog.LogConfiguration;
-import com.elvishew.xlog.LogLevel;
-import com.elvishew.xlog.XLog;
-import com.elvishew.xlog.flattener.ClassicFlattener;
-import com.elvishew.xlog.printer.AndroidPrinter;
-import com.elvishew.xlog.printer.Printer;
-import com.elvishew.xlog.printer.file.FilePrinter;
-import com.elvishew.xlog.printer.file.backup.NeverBackupStrategy;
-import com.elvishew.xlog.printer.file.naming.DateFileNameGenerator;
 import com.hjq.permissions.OnPermissionCallback;
 import com.hjq.permissions.Permission;
 import com.hjq.permissions.XXPermissions;
 import java.util.Date;
 import java.util.List;
 import cn.netbuffer.alarmtest.constant.Constants;
+import cn.netbuffer.alarmtest.receiver.AlarmReceiver;
 import cn.netbuffer.alarmtest.service.EchoService;
 import cn.netbuffer.alarmtest.service.ExactExecuteService;
 
@@ -40,8 +31,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
         requestPermissions();
-        String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/AlarmTest/logs";
-        initXLog(path);
     }
 
     private void requestPermissions() {
@@ -64,23 +53,6 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
-    }
-
-    private void initXLog(String logPath) {
-        LogConfiguration config = new LogConfiguration.Builder()
-                .logLevel(LogLevel.ALL)
-                .enableThreadInfo()
-                .enableStackTrace(5)
-                .enableBorder()
-                .build();
-        Printer androidPrinter = new AndroidPrinter(true);
-        Printer filePrinter = new FilePrinter
-                .Builder(logPath)
-                .flattener(new ClassicFlattener())
-                .fileNameGenerator(new DateFileNameGenerator())
-                .backupStrategy(new NeverBackupStrategy())
-                .build();
-        XLog.init(config, androidPrinter, filePrinter);
     }
 
     public void setRepeatingService(View view) {
@@ -110,6 +82,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void setExactExecuteService(View view) {
         ExactExecuteService.exactExecuteService(this);
+    }
+
+    public void exactExecuteReceiver(View view) {
+        AlarmReceiver.exactExecuteReceiver(this);
     }
 
 }

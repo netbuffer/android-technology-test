@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
-import cn.netbuffer.alarmtest.service.ExactExecuteService;
-
 public class SampleBootReceiver extends BroadcastReceiver {
 
     @Override
@@ -15,7 +13,7 @@ public class SampleBootReceiver extends BroadcastReceiver {
         Toast.makeText(context, "SampleBootReceiver:" + intent.getAction(), Toast.LENGTH_LONG).show();
         if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
             Log.i("SampleBootReceiver", "onReceive intent=" + intent);
-            ExactExecuteService.exactExecuteService(context);
+            AlarmReceiver.exactExecuteReceiver(context);
         }
     }
 }

@@ -1,6 +1,7 @@
 package cn.netbuffer.alarmtest.service;
 
 import android.app.AlarmManager;
+import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
@@ -23,6 +24,8 @@ public class ExactExecuteService extends Service {
     public void onCreate() {
         Log.i("onCreate");
         super.onCreate();
+        //设置前台服务，允许APP未启动的情况下，被BroadcastReceiver拉起服务
+        startForeground(Constants.EXACT_EXECUTE_SERVICE_FOREGROUND, new Notification());
     }
 
     @Override
