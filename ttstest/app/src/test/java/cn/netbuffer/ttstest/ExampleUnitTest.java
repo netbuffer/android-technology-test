@@ -1,4 +1,4 @@
-package cn.netbuffer.tts_test;
+package cn.netbuffer.ttstest;
 
 import org.junit.Test;
 

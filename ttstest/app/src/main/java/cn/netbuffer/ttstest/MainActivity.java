@@ -1,4 +1,4 @@
-package cn.netbuffer.tts_test;
+package cn.netbuffer.ttstest;
 
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
@@ -6,9 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import java.util.Locale;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
