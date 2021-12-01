@@ -1,2 +1,2 @@
-# hilttest
+# HiltTest
 * https://dagger.dev/hilt/
