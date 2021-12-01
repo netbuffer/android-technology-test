@@ -54,6 +54,13 @@
             android:text="map" />
 
         <Button
+            android:id="@+id/json_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="json"
+            android:text="json" />
+
+        <Button
             android:id="@+id/logger_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

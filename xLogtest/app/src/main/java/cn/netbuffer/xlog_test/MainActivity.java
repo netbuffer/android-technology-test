@@ -5,6 +5,7 @@ import android.os.Environment;
 import android.view.View;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+import com.alibaba.fastjson.JSONObject;
 import com.elvishew.xlog.LogConfiguration;
 import com.elvishew.xlog.LogLevel;
 import com.elvishew.xlog.Logger;
@@ -88,11 +89,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void warn(View view) {
-        XLog.d("warn message %s", view.toString());
+        XLog.w("warn message %s", view.toString());
     }
 
     public void error(View view) {
-        XLog.d("error message %s", view.toString());
+        XLog.e("error message %s", view.toString());
     }
 
     public void map(View view) {
@@ -101,6 +102,13 @@ public class MainActivity extends AppCompatActivity {
         map.put("key2", "value2");
         XLog.d(map);
         XLog.d("map data=%s", map);
+    }
+
+    public void json(View view) {
+        JSONObject json = new JSONObject();
+        json.put("key1", 1);
+        json.put("key2", "value2");
+        XLog.json(json.toJSONString());
     }
 
     public void logger(View view) {

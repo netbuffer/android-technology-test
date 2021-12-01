@@ -37,5 +37,6 @@ dependencies {
     implementation 'com.elvishew:xlog:1.10.1'
     // https://mvnrepository.com/artifact/com.hjq/xxpermissions
     implementation 'com.hjq:xxpermissions:10.6'
+    implementation 'com.alibaba:fastjson:1.1.73.android'
 
 }
