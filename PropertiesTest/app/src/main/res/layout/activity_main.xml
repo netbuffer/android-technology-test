@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:onClick="readDevConfig"
             android:textAllCaps="false"
-            android:text="debug" />
+            android:text="readDevConfig" />
 
         <Button
             android:id="@+id/info_btn"
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:onClick="readPrdConfig"
             android:textAllCaps="false"
-            android:text="info" />
+            android:text="readPrdConfig" />
 
     </LinearLayout>
 
