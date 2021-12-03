@@ -19,12 +19,18 @@
             android:layout_height="wrap_content"/>
 
         <Button
-            android:id="@+id/debug_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="send"
+            android:onClick="sendBroadcast"
             android:textAllCaps="false"
-            android:text="send" />
+            android:text="sendBroadcast" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="sendOrderedBroadcast"
+            android:textAllCaps="false"
+            android:text="sendOrderedBroadcast" />
 
     </LinearLayout>
 

@@ -37,12 +37,21 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "register userAddReceiver");
     }
 
-    public void send(View view) {
+    public void sendBroadcast(View view) {
         Intent intent = new Intent(USERADD_ACTION);
         Bundle bundle = new Bundle();
         bundle.putString("key", "your-value");
         intent.putExtras(bundle);
         sendBroadcast(intent);
         Log.i(TAG, "sendBroadcast userAddReceiver");
+    }
+
+    public void sendOrderedBroadcast(View view) {
+        Intent intent = new Intent(USERADD_ACTION);
+        Bundle bundle = new Bundle();
+        bundle.putString("key", "your-value");
+        intent.putExtras(bundle);
+        sendOrderedBroadcast(intent, null);
+        Log.i(TAG, "sendOrderedBroadcast userAddReceiver");
     }
 }

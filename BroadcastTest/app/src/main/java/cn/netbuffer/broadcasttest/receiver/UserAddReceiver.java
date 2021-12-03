@@ -15,6 +15,8 @@ public class UserAddReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Log.i(TAG, "receive broadcast=" + intent);
         Toast.makeText(context, "receive:" + intent.getAction(), Toast.LENGTH_SHORT).show();
+        //中断广播消息的后续传递过程
+//        abortBroadcast();
     }
 
 }
