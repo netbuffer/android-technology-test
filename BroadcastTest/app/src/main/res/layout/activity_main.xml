@@ -32,6 +32,13 @@
             android:textAllCaps="false"
             android:text="sendOrderedBroadcast" />
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="sendLocalBroadcast"
+            android:textAllCaps="false"
+            android:text="sendLocalBroadcast" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
