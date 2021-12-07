@@ -35,6 +35,13 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="sendOrderedBroadcastTruncatedMessage"
+            android:textAllCaps="false"
+            android:text="sendOrderedBroadcast截断消息" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:onClick="sendLocalBroadcast"
             android:textAllCaps="false"
             android:text="sendLocalBroadcast" />
