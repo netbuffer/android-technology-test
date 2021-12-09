@@ -1,28 +1,32 @@
 package cn.netbuffer.persistencetest;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import androidx.appcompat.app.AppCompatActivity;
 import org.apache.commons.io.IOUtils;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
-import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String fileName = "file_test";
     private static final String TAG = "MainActivity";
     private EditText editText;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         editText = findViewById(R.id.your_text);
+        sharedPreferences = getSharedPreferences("persistence_test", Context.MODE_PRIVATE);
     }
 
     /**
@@ -49,6 +53,16 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             Log.i(TAG, "openFileInput IOException=" + e.getMessage());
         }
+    }
+
+    public void spWriteKey(View view) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("your_key", editText.getText().toString());
+        editor.apply();
+    }
+
+    public void spReadKey(View view) {
+        editText.setText(sharedPreferences.getString("your_key", ""));
     }
 
 }
