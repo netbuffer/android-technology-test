@@ -1,18 +1,22 @@
 package cn.netbuffer.persistencetest;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import androidx.appcompat.app.AppCompatActivity;
+
 import org.apache.commons.io.IOUtils;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * openFileOutput/openFileInput的使用不需要在AndroidManifest.xml中声明文件权限
+     *
      * @param view
      */
     public void writeFile(View view) {
@@ -63,6 +68,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void spReadKey(View view) {
         editText.setText(sharedPreferences.getString("your_key", ""));
+    }
+
+    public void sqlite(View view) {
+        startActivity(new Intent(this, SqliteActivityTest.class));
     }
 
 }

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PersistenceTest</string>
+    <string name="sqlite_activity_name">sqlite数据库技术测试</string>
 </resources>
