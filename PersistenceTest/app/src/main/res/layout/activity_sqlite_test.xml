@@ -6,40 +6,94 @@
     android:layout_height="match_parent"
     tools:context=".SqliteActivityTest">
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="5dp"
-        tools:ignore="MissingConstraints">
-
-<!--        <EditText-->
-<!--            android:id="@+id/your_text"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:hint="请输入要持久化存储的信息" />-->
-
-        <Button
+        android:layout_height="match_parent">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="initDatabase"
-            android:text="initDatabase"
-            android:textAllCaps="false" />
+            android:orientation="vertical"
+            android:padding="5dp"
+            tools:ignore="MissingConstraints">
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="insert"
-            android:text="insert"
-            android:textAllCaps="false" />
+            <EditText
+                android:id="@+id/item_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="item_id" />
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="rawQuery"
-            android:text="rawQuery"
-            android:textAllCaps="false" />
+            <EditText
+                android:id="@+id/item_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="item_title" />
 
-    </LinearLayout>
+            <EditText
+                android:id="@+id/item_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="item_desc" />
+
+            <EditText
+                android:id="@+id/item_real"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="item_real" />
+
+            <EditText
+                android:id="@+id/item_int"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="item_int" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="initDatabase"
+                android:text="initDatabase"
+                android:textAllCaps="false" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="insert"
+                android:text="insert"
+                android:textAllCaps="false" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="update"
+                android:text="update"
+                android:textAllCaps="false" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="delete"
+                android:text="delete"
+                android:textAllCaps="false" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="deleteAll"
+                android:text="deleteAll"
+                android:textAllCaps="false" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="rawQuery"
+                android:text="rawQuery"
+                android:textAllCaps="false" />
+
+            <TextView
+                android:id="@+id/raw_query_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
