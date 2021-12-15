@@ -14,6 +14,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + "item_int integer, "
             + "item_title text)";
 
+    public static final String CREATE_LOG_TABLE_SQL = "create table t_log ("
+            + "id integer primary key autoincrement, "
+            + "create_time integer, "
+            + "type text)";
+
     private Context context;
 
     public DatabaseHelper(Context context, String dbFileName,
@@ -31,6 +36,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL(CREATE_LOG_TABLE_SQL);
+        Toast.makeText(context, "update Table[Data] succeeded", Toast.LENGTH_SHORT).show();
     }
 
 }

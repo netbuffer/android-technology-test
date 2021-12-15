@@ -56,6 +56,13 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="updateDatabase"
+                android:text="updateDatabase"
+                android:textAllCaps="false" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:onClick="insert"
                 android:text="insert"
                 android:textAllCaps="false" />

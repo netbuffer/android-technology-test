@@ -1,6 +1,7 @@
 @echo off
 rem adb-database-tool
 color BF
+rem adb devices
 adb -s emulator-5554 shell
 rem 切换超级管理员权限su才能进入对应目录
 cd /data/data/cn.netbuffer.persistencetest/databases/

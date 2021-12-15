@@ -41,9 +41,21 @@ public class SqliteActivityTest extends AppCompatActivity {
         buildSQLiteDatabase();
     }
 
+    public void updateDatabase(View view) {
+        Log.i(TAG, "updateDatabase");
+        updateDatabase();
+    }
+
     private SQLiteDatabase buildSQLiteDatabase() {
         DatabaseHelper databaseHelper = new DatabaseHelper(this, dbFileName, null, dbVersion);
         //发起建库操作，SQLiteOpenHelper.onCreate方法得到执行，重复点击按钮不会重复执行
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
+        return sqLiteDatabase;
+    }
+
+    private SQLiteDatabase updateDatabase() {
+        //通过将数据库版本号更新,来使SQLiteOpenHelper.onUpgrade方法得到
+        DatabaseHelper databaseHelper = new DatabaseHelper(this, dbFileName, null, dbVersion+1);
         SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
         return sqLiteDatabase;
     }
