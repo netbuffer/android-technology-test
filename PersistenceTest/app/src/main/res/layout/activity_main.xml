@@ -49,6 +49,13 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="spRemoveKey"
+            android:text="spRemoveKey"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:onClick="sqlite"
             android:text="sqlite"
             android:textAllCaps="false" />

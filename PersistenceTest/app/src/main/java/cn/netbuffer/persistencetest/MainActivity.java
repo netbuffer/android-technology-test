@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import org.apache.commons.io.IOUtils;
 
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private EditText editText;
     private SharedPreferences sharedPreferences;
+    private static final String YOUR_SP_KEY = "your_key";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,12 +64,20 @@ public class MainActivity extends AppCompatActivity {
 
     public void spWriteKey(View view) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("your_key", editText.getText().toString());
+        editor.putString(YOUR_SP_KEY, editText.getText().toString());
         editor.apply();
     }
 
     public void spReadKey(View view) {
-        editText.setText(sharedPreferences.getString("your_key", ""));
+        editText.setText(sharedPreferences.getString(YOUR_SP_KEY, ""));
+    }
+
+    public void spRemoveKey(View view) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove(YOUR_SP_KEY);
+        editor.commit();
+//        editor.remove(YOUR_SP_KEY).commit();
+        Toast.makeText(this, "remove key[" + YOUR_SP_KEY + "] succeeded", Toast.LENGTH_SHORT).show();
     }
 
     public void sqlite(View view) {
