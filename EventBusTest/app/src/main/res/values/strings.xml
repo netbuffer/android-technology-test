@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">EventBusTest</string>
+    <string name="second_name">SecondActivity</string>
+</resources>
