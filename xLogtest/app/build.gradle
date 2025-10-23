@@ -3,6 +3,8 @@ plugins {
 }
 
 android {
+    namespace "cn.netbuffer.xlog_test"
+
     compileSdk 30
 
     defaultConfig {
@@ -35,8 +37,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'com.elvishew:xlog:1.10.1'
-    // https://mvnrepository.com/artifact/com.hjq/xxpermissions
-    implementation 'com.hjq:xxpermissions:10.6'
+    // 移除不可用的XXPermissions依赖，使用原生Android权限API
+    //implementation 'com.hjq:xxpermissions:10.6'
     implementation 'com.alibaba:fastjson:1.1.73.android'
-
 }

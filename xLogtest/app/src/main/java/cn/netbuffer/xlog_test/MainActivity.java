@@ -15,9 +15,16 @@ import com.elvishew.xlog.printer.Printer;
 import com.elvishew.xlog.printer.file.FilePrinter;
 import com.elvishew.xlog.printer.file.backup.NeverBackupStrategy;
 import com.elvishew.xlog.printer.file.naming.DateFileNameGenerator;
-import com.hjq.permissions.OnPermissionCallback;
-import com.hjq.permissions.Permission;
-import com.hjq.permissions.XXPermissions;
+import android.content.Intent;
+import android.net.Uri;
+import android.provider.Settings;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.Arrays;
+import java.util.Comparator;
+import android.os.Handler;
+import android.os.Looper;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/xlogtest/logs";
-        requestPermissions();
+        requestPermissions(); // 请求权限
         initXLog(path);
         TextView textView = findViewById(R.id.text);
         textView.setText("日志路径:" + path);
@@ -41,25 +48,42 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void requestPermissions() {
-        XXPermissions.with(this)
-                .permission(Permission.MANAGE_EXTERNAL_STORAGE)
-                .request(new OnPermissionCallback() {
-                    @Override
-                    public void onGranted(List<String> permissions, boolean all) {
-                        if (all) {
-                        } else {
-                        }
-                    }
-
-                    @Override
-                    public void onDenied(List<String> permissions, boolean never) {
-                        if (never) {
-                            // 如果是被永久拒绝就跳转到应用权限系统设置页面
-                            XXPermissions.startPermissionActivity(MainActivity.this, permissions);
-                        } else {
-                        }
-                    }
-                });
+        // Android 10及以上需要MANAGE_EXTERNAL_STORAGE权限
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+            if (!android.os.Environment.isExternalStorageManager()) {
+                // 跳转到管理存储权限设置页面
+                Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
+                intent.setData(Uri.parse("package:" + getPackageName()));
+                startActivity(intent);
+            }
+        } else {
+            // Android 10以下使用旧的权限请求方式
+            requestPermissions(new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE,
+                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, 100);
+        }
+    }
+    
+    // 处理权限请求结果
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 100) {
+            // 这里可以添加权限被授予或拒绝的处理逻辑
+            boolean allGranted = true;
+            for (int result : grantResults) {
+                if (result != android.content.pm.PackageManager.PERMISSION_GRANTED) {
+                    allGranted = false;
+                    break;
+                }
+            }
+            
+            if (!allGranted) {
+                // 权限被拒绝，可以提示用户或跳转到设置页面
+                Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                intent.setData(Uri.parse("package:" + getPackageName()));
+                startActivity(intent);
+            }
+        }
     }
 
     private void initXLog(String logPath) {
@@ -113,6 +137,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void logger(View view) {
         logger.d("使用单独的logger打印日志");
+    }
+
+    public void viewLogs(View view) {
+        // 检查权限
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R && !android.os.Environment.isExternalStorageManager()) {
+            // 没有足够的存储权限，请求权限
+            requestPermissions();
+            return;
+        }
+        
+        // 有权限，启动LogViewerActivity来显示日志
+        Intent intent = new Intent(MainActivity.this, LogViewerActivity.class);
+        startActivity(intent);
     }
 
 }

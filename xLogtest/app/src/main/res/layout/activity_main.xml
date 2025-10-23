@@ -8,15 +8,19 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="5dp"
         tools:ignore="MissingConstraints">
 
+        <!-- 日志路径显示 -->
         <TextView
             android:id="@+id/text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:background="@android:color/darker_gray"
+            android:textColor="@android:color/white"/>
 
         <Button
             android:id="@+id/debug_btn"
@@ -66,6 +70,13 @@
             android:layout_height="wrap_content"
             android:onClick="logger"
             android:text="logger" />
+
+        <Button
+            android:id="@+id/view_logs_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="viewLogs"
+            android:text="查看日志" />
     </LinearLayout>
 
 
