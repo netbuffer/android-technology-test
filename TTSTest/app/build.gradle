@@ -3,6 +3,7 @@ plugins {
 }
 
 android {
+    namespace "cn.netbuffer.ttstest"
     compileSdk 30
 
     defaultConfig {
