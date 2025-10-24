@@ -3,6 +3,8 @@ plugins {
 }
 
 android {
+    namespace "cn.netbuffer.persistencetest"
+
     compileSdk 30
 
     defaultConfig {
