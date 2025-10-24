@@ -3,6 +3,8 @@ plugins {
 }
 
 android {
+
+    namespace "cn.netbuffer.handlertest"
     compileSdk 30
 
     defaultConfig {
