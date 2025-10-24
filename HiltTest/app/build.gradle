@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'dagger.hilt.android.plugin'
 
 android {
+    namespace "cn.netbuffer.hilttest"
     compileSdk 30
 
     defaultConfig {
