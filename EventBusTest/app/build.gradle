@@ -3,6 +3,9 @@ plugins {
 }
 
 android {
+
+    namespace "cn.netbuffer.eventbustest"
+
     compileSdk 30
 
     defaultConfig {
