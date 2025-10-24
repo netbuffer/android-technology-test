@@ -3,6 +3,7 @@ plugins {
 }
 
 android {
+    namespace "cn.netbuffer.propertiestest"
     compileSdk 30
 
     defaultConfig {
