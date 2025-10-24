@@ -3,6 +3,7 @@ plugins {
 }
 
 android {
+    namespace "cn.netbuffer.broadcasttest"
     compileSdk 30
 
     defaultConfig {
